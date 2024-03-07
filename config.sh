@@ -72,6 +72,18 @@ create_config() {
 EOF
 }
 
+fix_etc_hosts() {
+  if [[ -z $LDAP_IP ]]; then
+    echo FATAL: Empty LDAP_IP
+    exit 2
+  fi
+  if [[ -z $LDAP_FQDN ]]; then
+    echo FATAL: Empty LDAP_FQDN
+    exit 2
+  fi
+  echo $LDAP_IP $LDAP_FQDN >> /etc/hosts
+}
+
 create_db() {
   kdb5_util -P $KERB_MASTER_KEY -r $REALM create -s
 }
@@ -112,6 +124,7 @@ if [ ! -f /kerberos_initialized ]; then
   mkdir -p /var/log/kerberos
 
   create_config
+  fix_etc_hosts
   init_ldap
   create_admin_user
   create_db
