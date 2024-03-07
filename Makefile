@@ -1,4 +1,4 @@
-NAME = nugaon/kerberos-with-ldap
+NAME = jeanspector/kerberos-with-ldap-no-dns
 VERSION = 1.0.0
 
 .PHONY: build build-nocache tag-latest push push-latest release git-tag-version
