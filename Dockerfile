@@ -1,10 +1,9 @@
-FROM ubuntu
+FROM ubuntu:20.04
 
 LABEL MAINTAINER nugaon <toth.viktor.levente@gmail.com>
 
 # kerberos
-RUN apt-get update -y && apt-get install -y krb5-kdc-ldap krb5-admin-server \
-ldap-utils
+RUN apt-get update -y && apt-get install -y krb5-kdc-ldap krb5-admin-server ldap-utils
 
 EXPOSE 88 464 749
 
